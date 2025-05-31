@@ -7,3 +7,5 @@ from rest_framework.response import Response
 @api_view(['GET'])
 def hello_drf_view(request):
     return Response({"message": "Hello, world!"})
+
+
