@@ -7,8 +7,7 @@ on:
 jobs:
   deploy:
     name: Deploy to EC2
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest   
     
     steps:
       # actions/checkout@v3: 소스코드를 runner에 내려받습니다.
