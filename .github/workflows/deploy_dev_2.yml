@@ -8,16 +8,19 @@ jobs:
   deploy:
     name: Deploy to EC2
     runs-on: ubuntu-latest
-        
-    steps:  
-      - name: connect ec2
-        uses: appleboy/ssh-action@master  # ssh 접속 라이브러리
+    
+    
+    steps:
+      # actions/checkout@v3: 소스코드를 runner에 내려받습니다.
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create remote directory on EC2
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          port: 22
           script: |
-            echo "< requirements.txt installed >"
-            echo "< pulled completed >"
-            echo "< secrets.json file created >"
+            sudo rm -rf /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
+            mkdir -p /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
