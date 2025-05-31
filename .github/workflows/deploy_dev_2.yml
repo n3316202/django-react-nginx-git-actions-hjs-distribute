@@ -43,14 +43,23 @@ jobs:
           script: |
             cd /home/ubuntu/django-react-nginx-github-actions-hjs-distribute/
             
+            # 시스템 업데이트 및 Python 설치
             sudo apt update
-            sudo apt install -y python3 python3-pip
+            sudo apt install -y python3 python3-pip python3-venv
 
+            # (선택) 가상환경 생성 및 활성화
+            python3 -m venv venv
+            source venv/bin/activate
+
+            # 의존성 설치
+            pip install --upgrade pip
             pip install -r requirements.txt
 
-            python manage.py makemigrations
+            # Django 마이그레이션
+            python manage.py makemigrations --no-input
             python manage.py migrate --no-input        
 
+            # 서버 실행 (백그라운드, 로그 저장)
             nohup python manage.py runserver 0.0.0.0:8000 > server.log 2>&1 &
 
    
