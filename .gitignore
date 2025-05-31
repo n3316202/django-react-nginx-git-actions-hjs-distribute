@@ -1,24 +1,82 @@
-# Logs
-logs
+# =====================
+# Global
+# =====================
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
+*.env
+.env.*
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
+
+# =====================
+# Django
+# =====================
+/backend/db.sqlite3
+/backend/staticfiles/
+backend/media/
+*.sqlite3
+
+# VSCode project settings
+.vscode/
+
+# Migrations
+*/migrations/
+!*/migrations/__init__.py
+
+# =====================
+# Node / React / Vite
+# =====================
+/frontend/node_modules/
+/frontend/dist/
+/frontend/.vite/
+/frontend/.next/
+/frontend/.cache/
+/frontend/.eslintcache
+
+# =====================
+# Docker
+# =====================
+*.pid
+docker-compose.override.yml
+
+# =====================
+# Nginx (optional)
+# =====================
+nginx/*.pid
+nginx/logs/
+
+# =====================
+# OS
+# =====================
+ehthumbs.db
+Icon?
+desktop.ini
+
+# =====================
+# Test / Coverage
+# =====================
+htmlcov/
+.tox/
+.nox/
+.coverage
+coverage.*
+.cache
+pytest_cache/
+
+# =====================
+# Build artifacts
+# =====================
+*.egg-info/
+build/
+develop-eggs/
+dist/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg
