@@ -47,7 +47,7 @@ jobs:
             python manage.py makemigrations --no-input
             python manage.py migrate --no-input
             
-            echo "{\"SECRET_KEY\": \"${{ secrets.SECRET_KEY }}\"}" > secrets.json
+            echo "{\"SECRET_KEY\": \"${{ secrets.EC2_KEY }}\"}" > secrets.json
             nohup python manage.py runserver 0.0.0.0:8000 > server.log 2>&1 &
 
    
