@@ -1,8 +1,8 @@
 FROM python:3.12-slim
 
-WORKDIR /app/backend
+WORKDIR /app
 
-# 필수 빌드 도구 설치 (mysqlclient 설치용, pillow 빌드)
+# 필수 패키지 설치
 RUN apt-get update && apt-get install -y \
     gcc \
     default-libmysqlclient-dev \
@@ -17,17 +17,16 @@ RUN apt-get update && apt-get install -y \
     tk-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# requirements 복사 및 설치
+COPY backend/requirements.txt .
 
+RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn
 
-COPY . .
+# 소스 복사
+COPY backend/ ./backend/
+COPY backend/manage.py .
 
-# 엔트리포인트 스크립트 복사 및 실행 권한 부여 
-# COPY ./config/docker/entrypoint.prod.sh /app/entrypoint.prod.sh
+# (선택) 엔트리포인트 스크립트 설정 가능
+# COPY docker/entrypoint.prod.sh /app/entrypoint.prod.sh
 # RUN chmod +x /app/entrypoint.prod.sh
-
-
-
-
