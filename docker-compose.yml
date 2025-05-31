@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./docker/backend
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings.prod #Django가 어떤 settings 파일을 사용할지 지정
+    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 #Docker 컨테이너 실행 시 어떤 명령어로 서버를 띄울지 지정
+    expose:
+      - 8000
+
