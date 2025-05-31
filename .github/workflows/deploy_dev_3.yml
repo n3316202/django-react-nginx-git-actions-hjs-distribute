@@ -1,4 +1,4 @@
-name: Django EC2 Deploy
+name: dev_3_템플릿_기반_배포를_위한_설정_및_도커_배포_2025-06-01
 
 on:
   push:
