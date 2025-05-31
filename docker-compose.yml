@@ -2,10 +2,26 @@ version: '3.8'
 
 services:
   backend:
-    build: ./docker/backend
+    build: ./
     environment:
-      - DJANGO_SETTINGS_MODULE=config.settings.prod #Django가 어떤 settings 파일을 사용할지 지정
-    command: gunicorn config.wsgi:application --bind 0.0.0.0:8000 #Docker 컨테이너 실행 시 어떤 명령어로 서버를 띄울지 지정
+      - DJANGO_SETTINGS_MODULE=backend.config.settings.prod  # Django 설정 모듈
+    command: >
+      sh -c "
+        python manage.py makemigrations --no-input &&
+        python manage.py migrate --no-input &&
+        gunicorn backend.config.wsgi:application --bind 0.0.0.0:8000
+      "
     expose:
-      - 8000
+      - "8000"
+  
+  nginx:
+    image: nginx:stable-alpine
+    build: ./
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf    
+    depends_on:
+      - backend
+
 
