@@ -1,5 +1,8 @@
 name: GitHub Actions Demo
-on: [push]
+on:
+  push:
+    branches:
+      - dev_2_템플릿기반_github_actions_간단배포-2025-05-31 
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
