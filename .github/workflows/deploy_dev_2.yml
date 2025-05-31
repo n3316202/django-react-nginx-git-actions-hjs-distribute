@@ -3,7 +3,7 @@ name: Django EC2 Deploy
 on:
   push:
     branches:
-      - dev_2
+      - dev_2_템플릿기반_github_actions_간단배포-2025-05-31
 jobs:
   deploy:
     name: Deploy to EC2
