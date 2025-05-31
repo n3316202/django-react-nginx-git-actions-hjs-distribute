@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from api.models import Category
-from backend.api.serializers.category_serializer import CategorySimpleSerializer
+from api.serializers.category_serializer import CategorySimpleSerializer
 from rest_framework.viewsets import ModelViewSet
 
 
