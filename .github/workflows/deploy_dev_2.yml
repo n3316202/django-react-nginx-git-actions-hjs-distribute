@@ -1,0 +1,31 @@
+name: Django EC2 Deploy
+
+on:
+  push:
+    branches:
+      - dev_2_템플릿기반_github_actions_간단배포-2025-05-31   
+
+jobs:
+    deploy:
+        name: Deploy to EC2
+        runs-on: ubuntu-latest
+        
+        steps:  
+          - name: connect ec2
+            uses: appleboy/ssh-action@master  # ssh 접속 라이브러리
+            with:
+              host: ${{ secrets.EC2_HOST }}
+              username: ${{ secrets.EC2_USER }}
+              key: ${{ secrets.EC2_KEY }}
+              port: 22
+              script: |
+                    cd /home/ubuntu/Django_lab
+                    source venv/bin/activate 
+                    cd /home/ubuntu/Django_lab
+                    pip install -r requirements.txt
+                    echo "< requirements.txt installed >"
+                    git pull
+                    echo "< pulled completed >"
+                    echo "{\"SECRET_KEY\": \"$SECRET_KEY\"}" > secrets.json
+                    echo "< secrets.json file created >"
+                    nohup python manage.py runserver 0.0.0.0:8000 &
