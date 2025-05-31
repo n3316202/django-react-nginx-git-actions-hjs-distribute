@@ -5,8 +5,9 @@ on:
     branches:
       - dev_2_템플릿기반_github_actions_간단배포-2025-05-31
 jobs:
-  Explore-GitHub-Actions2:
-    runs-on: ubuntu-latest 
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest   
     
     steps:
       # actions/checkout@v3: 소스코드를 runner에 내려받습니다.
