@@ -16,7 +16,7 @@ services:
       "
     volumes:
       - ./backend:/app/backend
-      - static:/home/app/web/staticfiles #dev_4
+      - static:/home/app/web/media #dev_4
       - media:/home/app/web/media
     expose:
       - "8000"
