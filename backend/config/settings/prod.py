@@ -9,8 +9,10 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 #dev_4
+print('이전',BASE_DIR)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print('이후',BASE_DIR)
 
 # 정적파일 URL 경로
 STATIC_URL = '/static/'
