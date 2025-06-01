@@ -1,6 +1,26 @@
 # config/settings/dev.py
 #개발 전용 설정만 덮어쓴다"는 의미
 from .base import *  
+import os
+from decouple import config
+
+
+# dev_5
+
+from dotenv import load_dotenv
+
+load_dotenv(dotenv_path=BASE_DIR / '.env')  # 또는 '.env.prod' 등
+
+# DEBUG = config('DEBUG', default=False, cast=bool)
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
+# ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split(',')
+# CORS_ALLOWED_ORIGINS = [
+#     config('CORS_ALLOWED_ORIGIN'),
+# ]
+# CSRF_TRUSTED_ORIGINS = [
+#     config('CSRF_TRUSTED_ORIGIN'),
+# ]
+
 
 DEBUG = True
 
@@ -9,11 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = ["*"]
 
 #dev_4
-print('이전',BASE_DIR)
-
-import os
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print('이후',BASE_DIR)
 
 # 정적파일 URL 경로
 STATIC_URL = '/static/'
@@ -26,3 +41,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
 # ]
+
