@@ -14,6 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 #BASE_DIR = Path(__file__).resolve().parent.parent
+
 # dev_3
 BASE_DIR = Path(__file__).resolve().parent.parent.parent  # settings/config 기준
 print("베이스 디렉토리",BASE_DIR)

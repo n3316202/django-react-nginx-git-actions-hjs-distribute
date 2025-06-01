@@ -10,12 +10,14 @@ ALLOWED_HOSTS = ["*"]
 
 #dev_4
 print('이전',BASE_DIR)
+
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 print('이후',BASE_DIR)
 
 # 정적파일 URL 경로
 STATIC_URL = '/static/'
+
 
 # collectstatic 명령어로 모이는 폴더 (EC2 내 정적파일 모음 경로)
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
