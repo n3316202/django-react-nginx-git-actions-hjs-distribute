@@ -23,9 +23,9 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           script: |
             sudo rm -rf /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
-            mkdir -p /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
+            mkdir -p /home/ubuntu/django-react-nginx-github-actions-hjs-distribute/backend
             echo "✅ Copying .env.prod files to project"   
-            cp /home/ubuntu/django_settings/django.env.prod /home/ubuntu/django-react-nginx-hjs-distribute/backend/.env.prod
+            cp /home/ubuntu/distribute_settings/django.env.prod /home/ubuntu/django-react-nginx-hjs-distribute/backend/.env.prod
             echo "✅ Done copying environment files"
       
       #주로 **로컬 코드(깃허브 저장소)**를 원격 서버(예: EC2)에 rsync 명령어를 통해 빠르게 복사/배포    
