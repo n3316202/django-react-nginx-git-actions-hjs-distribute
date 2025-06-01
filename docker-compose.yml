@@ -13,6 +13,9 @@ services:
         python manage.py migrate --no-input &&
         gunicorn backend.config.wsgi:application --bind 0.0.0.0:8000
       "
+    volumes:
+      - static:/home/app/web/staticfiles #dev_4
+      - media:/home/app/web/media
     expose:
       - "8000"
 
@@ -25,4 +28,7 @@ services:
     depends_on:
       - backend
 
+volumes:
+    static:
+    media:
 
