@@ -9,10 +9,11 @@ from decouple import config
 
 from dotenv import load_dotenv
 
-load_dotenv(dotenv_path=BASE_DIR / '.env')  # 또는 '.env.prod' 등
+load_dotenv(dotenv_path=BASE_DIR / '.env.prod')  # 또는 '.env.prod' 등
 
 # DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
+print('시크릿키',SECRET_KEY)
 # ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split(',')
 # CORS_ALLOWED_ORIGINS = [
 #     config('CORS_ALLOWED_ORIGIN'),
