@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      #dev_6 추가 미리 준비한 파일 카피 하기 
+
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master
         with:
@@ -35,7 +35,7 @@ jobs:
           remote_user: ${{ secrets.EC2_USER }}
           remote_key: ${{ secrets.EC2_KEY }}
       
-            #dev_6 추가 미리 준비한 파일 카피 하기 
+      #dev_6 추가 미리 준비한 파일 카피 하기 
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master
         with:
