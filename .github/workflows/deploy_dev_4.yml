@@ -3,7 +3,7 @@ name: dev_4_템플릿_기반_정적리소스_처리_2025_06_01
 on:
   push:
     branches:
-      - dev_4_템플릿_기반_정적처리_2025_06_01
+      - dev_4_템플릿_기반_정적리소스_처리_2025_06_01
 jobs:
   deploy:
     name: Deploy to EC2
