@@ -21,14 +21,17 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # requirements 복사 및 설치
-COPY backend/ .
+# COPY backend/ .
+COPY ./backend /app/backend
+
+WORKDIR /app/backend
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn
 
 # 소스 복사
-COPY backend/ ./backend/
-COPY backend/manage.py .
+#COPY backend/ ./backend/
+#COPY backend/manage.py .
 
 # (선택) 엔트리포인트 스크립트 설정 가능
 # COPY docker/entrypoint.prod.sh /app/entrypoint.prod.sh
