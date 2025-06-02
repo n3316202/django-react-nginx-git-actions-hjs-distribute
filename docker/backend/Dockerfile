@@ -33,7 +33,7 @@ RUN pip install gunicorn
 COPY backend/ ./backend/
 COPY backend/manage.py .
 
-#dev_6
+#dev_6 
 COPY docker/backend/wait-for-it.sh ./wait-for-it.sh
 RUN chmod +x ./wait-for-it.sh
 
