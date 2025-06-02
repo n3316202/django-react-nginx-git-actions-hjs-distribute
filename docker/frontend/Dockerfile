@@ -16,7 +16,5 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"] 
 
 # 컨테이너는 빌드 후 바로 종료 (build-only container)
-
-
 #EXPOSE 3000
 #CMD ["npm", "start"]
