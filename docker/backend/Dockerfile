@@ -21,7 +21,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # requirements 복사 및 설치
-COPY backend/ .
+COPY backend/requirements.txt ./requirements.txt
+COPY ../distribute_settings/django.env.prod ./env.prod 
 
 RUN pip install --no-cache-dir -r requirements.txt
 RUN pip install gunicorn
