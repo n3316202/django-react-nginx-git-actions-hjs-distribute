@@ -76,3 +76,6 @@ CSRF_TRUSTED_ORIGINS = [
     "http://52.79.37.117",
     "http://52.79.37.117:8080",
 ]
+
+#dev_10
+CORS_ORIGIN_ALLOW_ALL = True  # 어떠한 출처든 상관없이 정보를 공유
