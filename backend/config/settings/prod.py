@@ -45,3 +45,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 #     os.path.join(BASE_DIR, 'static'),
 # ]
 
+
+# dev_6 DB 변경
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'distribute',
+        'USER': 'distribute',
+        'PASSWORD': 'distribute',
+        'HOST': 'db',
+        'PORT': '3306',
+    }
+}
