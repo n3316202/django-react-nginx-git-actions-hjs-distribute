@@ -2,7 +2,7 @@ FROM node:22.14.0 as build
 
 WORKDIR /app/frontend
 
-COPY frontend/package.json ./
+COPY frontend/package.json frontend/package-lock.json* ./
 RUN npm install
 
 COPY frontend/ .
