@@ -40,6 +40,14 @@ services:
       MYSQL_PASSWORD: distribute
     volumes:
       - db-data:/var/lib/mysql
+  #dev_11
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: docker/frontend/Dockerfile
+    volumes:
+      - ./frontend:/app/frontend
+    working_dir: /app/frontend
 
   nginx:
     image: nginx:stable-alpine
