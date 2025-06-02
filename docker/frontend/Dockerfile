@@ -2,10 +2,10 @@ FROM node:22.14.0 as build
 
 WORKDIR /app/frontend
 
-COPY fronted/package.json ./
+COPY frontend/package.json ./
 RUN npm install
 
-COPY fronted/ .
+COPY frontend/ .
 RUN npm run build
 
 #EXPOSE 3000
