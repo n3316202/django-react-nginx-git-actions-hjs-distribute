@@ -5,9 +5,11 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
+# dev_6 curl 추가
 # 필수 패키지 설치
 RUN apt-get update && apt-get install -y \
     gcc \
+    curl \ 
     default-libmysqlclient-dev \
     pkg-config \
     build-essential \
