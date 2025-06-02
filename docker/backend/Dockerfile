@@ -34,8 +34,8 @@ COPY backend/ ./backend/
 COPY backend/manage.py .
 
 #dev_6
-COPY docker/backend/wait-for-it.sh .
-RUN chmod +x /wait-for-it.sh
+COPY docker/backend/wait-for-it.sh ./wait-for-it.sh
+RUN chmod +x ./wait-for-it.sh
 
 # (선택) 엔트리포인트 스크립트 설정 가능
 # COPY docker/entrypoint.prod.sh /app/entrypoint.prod.sh
