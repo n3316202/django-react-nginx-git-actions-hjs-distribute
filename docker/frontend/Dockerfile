@@ -13,7 +13,7 @@ FROM nginx:alpine
 COPY --from=build /app/frontend /usr/share/nginx/html
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"] 
 
 # 컨테이너는 빌드 후 바로 종료 (build-only container)
 
