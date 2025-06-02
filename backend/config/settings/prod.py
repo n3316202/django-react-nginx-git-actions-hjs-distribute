@@ -10,7 +10,7 @@ from decouple import config
 from dotenv import load_dotenv
 
 load_dotenv(dotenv_path=BASE_DIR / '.env.prod')  # 또는 '.env.prod' 등
-
+print('베이스_경로',BASE_DIR)
 # DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
 print('시크릿키',SECRET_KEY)
