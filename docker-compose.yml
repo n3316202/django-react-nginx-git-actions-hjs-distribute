@@ -3,7 +3,7 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .                        # 현재 디렉토리 (project-root)
+      context: .    # 현재 디렉토리 (project-root)
       dockerfile: docker/backend/Dockerfile
     environment:
       - DJANGO_SETTINGS_MODULE=backend.config.settings.prod
@@ -13,6 +13,7 @@ services:
         python manage.py makemigrations --no-input &&
         python manage.py migrate --no-input &&
         python manage.py collectstatic --no-input &&
+        python manage.py superuser || echo "⚠️  Superuser creation skipped or failed." && 
         gunicorn backend.config.wsgi:application --bind 0.0.0.0:8000
       "
     volumes:
