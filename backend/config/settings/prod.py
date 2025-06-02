@@ -16,6 +16,7 @@ load_dotenv(dotenv_path=PARENT_DIR / '.env.prod')  # 또는 '.env.prod' 등
 # DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
 print('시크릿키',SECRET_KEY)
+
 # ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS').split(',')
 # CORS_ALLOWED_ORIGINS = [
 #     config('CORS_ALLOWED_ORIGIN'),
@@ -69,3 +70,9 @@ DATABASES = {
 #         'PORT': os.getenv('DB_PORT', '3306'),
 #     }
 # }
+
+# dev_7
+CSRF_TRUSTED_ORIGINS = [
+    "http://52.79.37.117",
+    "http://52.79.37.117:8080",
+]
