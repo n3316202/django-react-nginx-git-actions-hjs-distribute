@@ -58,6 +58,7 @@ services:
       - static:/home/app/web/static
       - media:/home/app/web/media
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./frontend/dist:/usr/share/nginx/html #dev_11
     depends_on:
       - backend
       - frontend
