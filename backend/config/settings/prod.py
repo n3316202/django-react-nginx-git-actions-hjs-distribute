@@ -13,7 +13,6 @@ PARENT_DIR = BASE_DIR.parent  # 예: /app
 print('베이스_의 부모',PARENT_DIR)
 load_dotenv(dotenv_path=PARENT_DIR / '.env.prod')  # 또는 '.env.prod' 등
 
-
 # DEBUG = config('DEBUG', default=False, cast=bool)
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "fallback-secret")
 print('시크릿키',SECRET_KEY)
