@@ -20,7 +20,7 @@ services:
       - media:/app/backend/media
     expose:
       - "8000"
-    depends_on: #dev_6
+    depends_on: #dev_6 
       - db
 
   #dev_6 
