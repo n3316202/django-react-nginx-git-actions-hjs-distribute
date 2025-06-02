@@ -13,7 +13,13 @@ jobs:
       # actions/checkout@v3: 소스코드를 runner에 내려받습니다.
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      
+      # dev_11 먼저 빌드 하고 딜어감
+      - name: Build React frontend
+        working-directory: ./frontend
+        run: |
+          npm install
+          npm run build
 
       - name: Create remote directory on EC2
         uses: appleboy/ssh-action@master

@@ -42,13 +42,13 @@ services:
       - db-data:/var/lib/mysql
   
   #dev_11
-  frontend:
-    build:
-      context: .
-      dockerfile: docker/frontend/Dockerfile
-    volumes:
-      - ./frontend/dist:/app/frontend/dist
-    # working_dir: /app/frontend
+  # frontend:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/frontend/Dockerfile
+  #   volumes:
+  #     - ./frontend/dist:/app/frontend/dist
+  #   # working_dir: /app/frontend
 
   nginx:
     image: nginx:stable-alpine
