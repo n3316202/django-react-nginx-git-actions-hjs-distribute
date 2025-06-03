@@ -1,0 +1,62 @@
+name: dis_1_리액트_배포-2025-06-03
+
+on:
+  push:
+    branches:
+      - dis_1_리액트_배포-2025-06-03
+jobs:
+  deploy:
+    name: Deploy to EC2
+    runs-on: ubuntu-latest   
+    
+    steps:
+      # actions/checkout@v3: 소스코드를 runner에 내려받습니다.
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+
+      - name: Create remote directory on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            sudo rm -rf /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
+            mkdir -p /home/ubuntu/django-react-nginx-github-actions-hjs-distribute/
+      
+      #주로 **로컬 코드(깃허브 저장소)**를 원격 서버(예: EC2)에 rsync 명령어를 통해 빠르게 복사/배포    
+      - name: Rsync source code to EC2
+        uses: burnett01/rsync-deployments@4.1
+        with:
+          switches: -avzr --delete
+          remote_path: /home/ubuntu/django-react-nginx-github-actions-hjs-distribute/
+          remote_host: ${{ secrets.EC2_HOST }}
+          remote_user: ${{ secrets.EC2_USER }}
+          remote_key: ${{ secrets.EC2_KEY }}
+      
+      #dev_6 추가 미리 준비한 파일 카피 하기 
+      - name: Create remote directory on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            echo "✅ Copying .env.prod files to project"   
+            cp /home/ubuntu/distribute_settings/django.env.prod /home/ubuntu/django-react-nginx-github-actions-hjs-distribute/.env.prod
+            echo "✅ Done copying environment files"
+
+      - name: Run Docker Compose on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ubuntu/django-react-nginx-github-actions-hjs-distribute
+            docker compose -f docker-compose.prod.yml down
+            docker compose -f docker-compose.prod.yml up -d --build
+            docker image prune -f
+
+
