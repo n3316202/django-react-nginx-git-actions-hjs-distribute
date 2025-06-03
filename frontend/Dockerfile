@@ -4,7 +4,10 @@ FROM node:22.14.0 AS build
 WORKDIR /app
 
 COPY frontend/package.json frontend/package-lock.json* ./frontend/
-WORKDIR /app
+WORKDIR /app/frontend
+
+
+RUN npm install 
 COPY frontend/ ./
 
 RUN npm run build
