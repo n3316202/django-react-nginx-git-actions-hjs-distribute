@@ -3,10 +3,10 @@ FROM node:22.14.0 AS build
 
 WORKDIR /app
 
-COPY package.json package-lock.json* ./
-RUN npm install
+COPY frontend/package.json frontend/package-lock.json* ./frontend/
+WORKDIR /app
+COPY frontend/ ./
 
-COPY . .
 RUN npm run build
 
 # ⚙️ 2단계: Nginx로 정적 파일 서빙
