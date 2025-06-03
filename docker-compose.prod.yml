@@ -67,8 +67,8 @@ services:
 #     #db-data:
   frontend:
     build:
-      context: ./frontend         # Dockerfile 기준이 되는 폴더
-      dockerfile: Dockerfile      # frontend/Dockerfile
+      context: .         # Dockerfile 기준이 되는 폴더
+      dockerfile: frontend/Dockerfile      # frontend/Dockerfile
     ports:
       - "8080:80"
     volumes:

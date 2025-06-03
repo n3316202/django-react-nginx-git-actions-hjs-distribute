@@ -15,7 +15,7 @@ FROM nginx:alpine
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # default.conf는 루트 context에서 복사해야 하므로 compose에서 mount하거나 context에 포함 필요
-COPY ../nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
